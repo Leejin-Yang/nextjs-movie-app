@@ -12,10 +12,10 @@ const MovieDetail = ({ variables }: Props) => {
   const [title] = variables
 
   return (
-    <div>
+    <>
       <Seo title={title} />
       <h2>{title}</h2>
-    </div>
+    </>
   )
 }
 
