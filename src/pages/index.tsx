@@ -16,13 +16,7 @@ const Home = ({ results }: Props) => {
       <ul>
         {results?.map((movie) => (
           <li key={movie.id}>
-            <Link
-              href={{
-                pathname: `movies/${movie.id}`,
-                query: { title: movie.title },
-              }}
-              as={`movies/${movie.id}`}
-            >
+            <Link href={`movies/${movie.title}/${movie.id}`}>
               <a>{movie.title}</a>
             </Link>
           </li>
