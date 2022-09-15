@@ -1,32 +1,19 @@
-import type { NextPage } from 'next'
-import { useCallback, useState } from 'react'
-import { useMount } from 'react-use'
+import type { GetServerSideProps } from 'next'
 
 import Seo from '@/components/Seo'
 import { getMovieListApi } from '@/services/movie'
 import { MovieList } from '@/types/movie'
 
-const Home: NextPage = () => {
-  const [movies, setMovies] = useState<MovieList[]>([])
-  const [currentPage, setCurrentPage] = useState(1)
+interface Props {
+  results: MovieList[]
+}
 
-  const getMovieList = useCallback(async () => {
-    const response = await getMovieListApi({ page: currentPage })
-    const { results } = response.data
-
-    setMovies(results)
-  }, [currentPage])
-
-  useMount(() => {
-    getMovieList()
-  })
-
+const Home = ({ results }: Props) => {
   return (
     <>
       <Seo title='Home' />
-      {movies.length === 0 && <h4>Loading...</h4>}
       <ul>
-        {movies.map((movie) => (
+        {results?.map((movie) => (
           <li key={movie.id}>{movie.title}</li>
         ))}
       </ul>
@@ -35,3 +22,12 @@ const Home: NextPage = () => {
 }
 
 export default Home
+
+export const getServerSideProps: GetServerSideProps = async () => {
+  const response = await getMovieListApi({ page: 1 })
+  const { results } = response.data
+
+  return {
+    props: { results },
+  }
+}
