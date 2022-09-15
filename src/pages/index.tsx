@@ -1,4 +1,5 @@
 import type { GetServerSideProps } from 'next'
+import Link from 'next/link'
 
 import Seo from '@/components/Seo'
 import { getMovieListApi } from '@/services/movie'
@@ -14,7 +15,17 @@ const Home = ({ results }: Props) => {
       <Seo title='Home' />
       <ul>
         {results?.map((movie) => (
-          <li key={movie.id}>{movie.title}</li>
+          <li key={movie.id}>
+            <Link
+              href={{
+                pathname: `movies/${movie.id}`,
+                query: { title: movie.title },
+              }}
+              as={`movies/${movie.id}`}
+            >
+              <a>{movie.title}</a>
+            </Link>
+          </li>
         ))}
       </ul>
     </>
