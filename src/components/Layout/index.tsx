@@ -1,11 +1,12 @@
+import { ReactNode } from 'react'
 import Image from 'next/image'
 
-import NavBar from '../NavBar'
+import NavBar from './NavBar'
 
 import styles from './layout.module.css'
 
 interface Props {
-  children: React.ReactNode
+  children: ReactNode
 }
 
 const Layout = ({ children }: Props) => {
