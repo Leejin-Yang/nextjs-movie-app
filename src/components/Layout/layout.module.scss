@@ -1,0 +1,27 @@
+@use 'src/styles/constants/colors';
+
+.container {
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+.footer {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 0;
+  border-top: 1px solid colors.$GRAY3;
+}
+
+.footer a {
+  display: flex;
+  flex-grow: 1;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo {
+  height: 1em;
+  margin-left: 0.5rem;
+}

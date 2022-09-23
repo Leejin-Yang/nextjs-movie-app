@@ -1,30 +1,30 @@
-import { GetServerSideProps } from 'next'
+import { GetServerSideProps } from 'next';
 
-import Seo from '@/components/Seo'
+import Seo from '@/components/Seo';
 
 // type Variables = MovieList['id'] | MovieList['title']
 
 interface Props {
-  variables: string[]
+  variables: string[];
 }
 
 const MovieDetail = ({ variables }: Props) => {
-  const [title] = variables
+  const [title] = variables;
 
   return (
     <>
       <Seo title={title} />
-      <h2>{title}</h2>
+      <h1>{title}</h1>
     </>
-  )
-}
+  );
+};
 
-export default MovieDetail
+export default MovieDetail;
 
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
-  const variables = params?.params
+  const variables = params?.params;
 
   return {
     props: { variables },
-  }
-}
+  };
+};

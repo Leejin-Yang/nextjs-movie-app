@@ -1,7 +1,7 @@
-import Head from 'next/head'
+import Head from 'next/head';
 
 interface Props {
-  title: string
+  title: string;
 }
 
 const Seo = ({ title }: Props) => {
@@ -11,7 +11,7 @@ const Seo = ({ title }: Props) => {
       <meta name='description' content='Next Movie App' />
       <link rel='icon' href='/favicon.ico' />
     </Head>
-  )
-}
+  );
+};
 
-export default Seo
+export default Seo;

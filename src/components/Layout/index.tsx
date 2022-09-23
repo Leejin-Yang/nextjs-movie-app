@@ -1,17 +1,16 @@
-import { ReactNode } from 'react'
-import Image from 'next/image'
+import Image from 'next/image';
+import { ReactNode } from 'react';
 
-import NavBar from './NavBar'
-
-import styles from './layout.module.css'
+import styles from './layout.module.scss';
+import NavBar from './NavBar';
 
 interface Props {
-  children: ReactNode
+  children: ReactNode;
 }
 
 const Layout = ({ children }: Props) => {
   return (
-    <>
+    <div className={styles.container}>
       <NavBar />
       <main>{children}</main>
       <footer className={styles.footer}>
@@ -26,8 +25,8 @@ const Layout = ({ children }: Props) => {
           </span>
         </a>
       </footer>
-    </>
-  )
-}
+    </div>
+  );
+};
 
-export default Layout
+export default Layout;

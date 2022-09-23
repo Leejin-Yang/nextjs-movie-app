@@ -1,8 +1,9 @@
+@use 'src/styles/constants/colors';
+
 .nav {
   height: 60px;
-  margin-bottom: 20px;
   line-height: 60px;
-  border-bottom: 1px solid gray;
+  border-bottom: 1px solid colors.$GRAY3;
 }
 
 .tabList {
@@ -11,11 +12,11 @@
 }
 
 .tab {
-  font-weight: 500;
-  font-size: 16px;
   margin-left: 8px;
+  font-size: 16px;
+  font-weight: 500;
 }
 
 .active {
-  color: tomato;
+  color: colors.$ORANGE;
 }

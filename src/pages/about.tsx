@@ -1,6 +1,6 @@
-import type { NextPage } from 'next'
+import type { NextPage } from 'next';
 
-import Seo from '@/components/Seo'
+import Seo from '@/components/Seo';
 
 const About: NextPage = () => {
   return (
@@ -8,7 +8,7 @@ const About: NextPage = () => {
       <Seo title='About' />
       <h1>About</h1>
     </>
-  )
-}
+  );
+};
 
-export default About
+export default About;

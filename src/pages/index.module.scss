@@ -1,0 +1,7 @@
+.movieList {
+  margin: 20px 10px;
+
+  li + li {
+    margin-top: 20px;
+  }
+}

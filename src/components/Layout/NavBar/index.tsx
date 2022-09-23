@@ -1,17 +1,17 @@
-import Link from 'next/link'
-import { useRouter } from 'next/router'
-import cx from 'classnames'
+import cx from 'classnames';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
 
-import styles from './navBar.module.css'
+import styles from './navBar.module.scss';
 
 const NavBar = () => {
-  const router = useRouter()
+  const router = useRouter();
 
   return (
     <nav className={styles.nav}>
       <ul className={styles.tabList}>
         <li className={styles.tab}>
-          <Link href='/'>
+          <Link href='/' passHref>
             <a
               className={cx({
                 [styles.active]: router.pathname === '/',
@@ -22,7 +22,7 @@ const NavBar = () => {
           </Link>
         </li>
         <li className={styles.tab}>
-          <Link href='/about'>
+          <Link href='/about' passHref>
             <a
               className={cx({
                 [styles.active]: router.pathname === '/about',
@@ -34,7 +34,7 @@ const NavBar = () => {
         </li>
       </ul>
     </nav>
-  )
-}
+  );
+};
 
-export default NavBar
+export default NavBar;
