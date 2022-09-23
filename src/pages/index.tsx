@@ -1,22 +1,20 @@
 import type { GetServerSideProps } from 'next';
 import Link from 'next/link';
+import { dehydrate, QueryClient, useQuery } from 'react-query';
 
 import Seo from '@/components/Seo';
 import { getMovieListApi } from '@/services/movie';
-import { MovieList } from '@/types/movie';
 
 import styles from './index.module.scss';
 
-interface Props {
-  results: MovieList[];
-}
+const Home = () => {
+  const { data } = useQuery('movies', () => getMovieListApi().then((res) => res.data));
 
-const Home = ({ results }: Props) => {
   return (
     <>
       <Seo title='Home' />
       <ul className={styles.movieList}>
-        {results?.map((movie) => (
+        {data?.results?.map((movie) => (
           <li key={movie.id}>
             <Link href={`movies/${movie.title}/${movie.id}`}>
               <a>{movie.title}</a>
@@ -31,10 +29,13 @@ const Home = ({ results }: Props) => {
 export default Home;
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  const response = await getMovieListApi({ page: 1 });
-  const { results } = response.data;
+  const queryClient = new QueryClient();
+
+  await queryClient.prefetchQuery('movies', () => getMovieListApi().then((res) => res.data));
 
   return {
-    props: { results },
+    props: {
+      dehydratedState: dehydrate(queryClient),
+    },
   };
 };
